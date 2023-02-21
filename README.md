@@ -4,8 +4,8 @@
 
 // Update these with values suitable for your network.
 
-const char* ssid = "AIC Nalanda";
-const char* password = "@ichappynewyear2023";
+const char* ssid = "your wifi connection name";
+const char* password = "your password";
 const char* mqtt_server = "broker.hivemq.com";
 
 WiFiClient espClient;
@@ -70,9 +70,9 @@ void reconnect() {
     if (client.connect(clientId.c_str())) {
       Serial.println("connected");
       // Once connected, publish an announcement...
-      client.publish("AICNIT/outTopic", "hello world");
+      client.publish("Your Topic name for publish", "hello world");
       // ... and resubscribe
-      client.subscribe("AICNIT/inTopic");
+      client.subscribe("Your topic name for subscribe");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -105,6 +105,6 @@ void loop() {
     snprintf (msg, MSG_BUFFER_SIZE, "%ld", value);
     Serial.print("Publish message: ");
     Serial.println(msg);
-    client.publish("AICNIT/outTopic", msg);
+    client.publish("Your Topic name for publish", msg);
   }
 }
